@@ -26,6 +26,8 @@ class TropicalViewer(QtWidgets.QMainWindow):
 
         self.shortcut_next.activated.connect(self.next_page)
         self.shortcut_prev.activated.connect(self.prev_page)
+        self.scrollArea.reachbottom.connect(self.scroll_bottom)
+        self.scrollArea.reachtop.connect(self.scroll_top)
 
     def open_pdf_file(self, pdffile):
         self.pdfdocumentfile = pdffile
@@ -43,7 +45,7 @@ class TropicalViewer(QtWidgets.QMainWindow):
         self.progressBar.setValue(
             int(self.current_page * 100 / self.document.numPages()))    
         
-        self.search_page_text('the') ###  testing search
+        self.search_page_text('computer software') ###  testing search
 
     def jump_to_page(self, page):
         self.current_page = page
@@ -91,7 +93,10 @@ class TropicalViewer(QtWidgets.QMainWindow):
                 self.currentpageLabel.setPixmap(self.pixpage)
                 self.painter.end()
             
-        
+    def scroll_bottom(self):
+        self.next_page()
+    def scroll_top(self):
+        self.prev_page()
     def search_text(self):
         pass    
         
