@@ -13,7 +13,7 @@ class TropicalViewer(QtWidgets.QMainWindow):
         uic.loadUi('tropical-viewer.ui', self)
 
         self.current_page = 0
-        self.zoomFactor = 2.5
+        self.zoomFactor = 2.9
         self.set_size_percent(self.zoomFactor)
         self.open_pdf_file(
             '/home/miguel/Projects/Estadistica/Numerical_Methods_of_Statistics.pdf'
@@ -43,7 +43,7 @@ class TropicalViewer(QtWidgets.QMainWindow):
         self.progressBar.setValue(
             int(self.current_page * 100 / self.document.numPages()))    
         
-        self.search_page_text('Introduction')
+        self.search_page_text('the') ###  testing search
 
     def jump_to_page(self, page):
         self.current_page = page

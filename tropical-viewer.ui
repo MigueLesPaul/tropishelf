@@ -51,7 +51,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QScrollArea" name="scrollArea">
+         <widget class="PageScrollArea" name="scrollArea">
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -136,6 +136,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PageScrollArea</class>
+   <extends>QScrollArea</extends>
+   <header>widgets/PageScrollArea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
