@@ -30,11 +30,15 @@ class TropicalViewer(QtWidgets.QMainWindow):
         self.scrollArea.reachbottom.connect(self.scroll_bottom)
         self.scrollArea.reachtop.connect(self.scroll_top)
         self.scrollArea.areaSelected.connect(self.extract_text_from_area)
+        self.numPageEdit.editingFinished.connect(self.edit_current_page)
 
     def open_pdf_file(self, pdffile):
         self.pdfdocumentfile = pdffile
         self.document = Poppler.Document.load(self.pdfdocumentfile)
         self.document.setRenderHint(Poppler.Document.TextAntialiasing)
+        
+        self.numPagesLabel.setText(str(self.document.numPages()))
+        
 
     def reload_page(self):
         self.Poppage = self.document.page(self.current_page)
@@ -52,6 +56,7 @@ class TropicalViewer(QtWidgets.QMainWindow):
     def jump_to_page(self, page):
         self.current_page = page
         self.reload_page()
+
 
     def set_size_percent(self, perc):
         self.xres = perc * 72
@@ -92,12 +97,6 @@ class TropicalViewer(QtWidgets.QMainWindow):
                 self.currentpageLabel.setPixmap(self.pixpage)
                 self.painter.end()
 
-    def scroll_bottom(self):
-        self.next_page()
-
-    def scroll_top(self):
-        self.prev_page()
-
     def search_text(self):
         pass
 
@@ -114,6 +113,19 @@ class TropicalViewer(QtWidgets.QMainWindow):
         result = QRectF()
         result.setRect(recf[0], recf[1], recf[2], recf[3])
         return result
+    
+    # Widget Response Slots 
+    def scroll_bottom(self):
+        self.next_page()
+
+    def scroll_top(self):
+        self.prev_page()
+
+    def edit_current_page(self):
+        self.current_page= int(self.numPageEdit.text())
+        self.reload_page()
+
+
 
 
 if __name__ == "__main__":
