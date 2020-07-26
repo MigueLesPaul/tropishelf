@@ -50,7 +50,8 @@ class TropicalViewer(QtWidgets.QMainWindow):
         self.currentpageLabel.resize(self.zoomFactor * image.size())
         self.progressBar.setValue(
             int(self.current_page * 100 / self.document.numPages()))
-
+        
+        self.numPageEdit.setText(str(self.current_page))
         self.search_page_text('computer software')  ###  testing search
 
     def jump_to_page(self, page):
