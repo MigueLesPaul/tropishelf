@@ -52,7 +52,7 @@ class TropicalViewer(QtWidgets.QMainWindow):
             int(self.current_page * 100 / self.document.numPages()))
         
         self.numPageEdit.setText(str(self.current_page))
-        self.search_page_text('computer software')  ###  testing search
+        # self.search_page_text('computer software')  ###  testing search
 
     def jump_to_page(self, page):
         self.current_page = page
@@ -79,7 +79,9 @@ class TropicalViewer(QtWidgets.QMainWindow):
         new = []
         for p in rct:
             new.append(p * self.zoomFactor)
-        return rect.setRect(new[0], new[1], new[2], new[3])
+        rect = QRectF()
+        rect.setRect(new[0], new[1], new[2], new[3])
+        return rect
 
     def search_page_text(self, text):
         result = self.Poppage.search(text)
@@ -102,11 +104,20 @@ class TropicalViewer(QtWidgets.QMainWindow):
         pass
 
     def extract_text_from_area(self, rect):
-        rect = self.qrect2qrectf(rect)
+        rect = self.qrect2qrectf(rect) 
+        # rect = self.adjustRect(rect)
         print(rect)
+
+        text=''
         for box in self.Poppage.textList():
-            if rect.intersects(box.boundingBox()):
-                print(box.text())
+            
+            wordbox = self.adjustRect(box.boundingBox())
+            wordbox = box.boundingBox()
+            print(box.text(),wordbox,rect)
+            if rect.intersects(wordbox):
+                # print(s.text())
+                text= text+" "+box.text()
+        print(text)
 
     def qrect2qrectf(self, Rect):
         rec = Rect.getRect()
