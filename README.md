@@ -5,7 +5,7 @@ A PDF Reading organizer that aims to make the processing of high volumes of info
 ## Libraries and languages
 - Python
   - Pyqt for UI
-  - popplerqt for Pdf Rendering  
+  - popplerqt5 for Pdf Rendering  
 
 
 
@@ -42,4 +42,4 @@ A PDF Reading organizer that aims to make the processing of high volumes of info
 
 
 ## Acknowledgement	
-        - To the creator of PDF-Note Taking Addon for Anki for the idea 
+        - To the [creator](https://github.com/fonol/anki-search-inside-add-card/commits?author=fonol) of PDF-Note Taking Addon for Anki for the idea 
