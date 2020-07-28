@@ -1,4 +1,4 @@
-# Tropial-Bookshelf
+# Tropishelf
 
 A PDF Reading organizer that aims to make the processing of high volumes of information less gruesome. By using a priority-weighted reading queue, tries to aid productivity when reading multiple articles or books in PDF format scattered in user _library_. One of the main goals is connection with Zotero for a strong metadata information on the reading materials. We hope to make it a great companion to Zotero and use it as a centralized note taking app for digital text sources. 
 
